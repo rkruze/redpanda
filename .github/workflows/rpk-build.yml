@@ -80,6 +80,10 @@ jobs:
         with:
           name: rpk-archives
           path: zip/
+
+      - name: Directory listing
+        run: |
+          ls -ls
         
       - name: Unzip darwin build
         working-directory: zip/
