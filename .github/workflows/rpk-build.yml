@@ -118,7 +118,7 @@ jobs:
 
   create-release:
     name: Create release
-    needs: build
+    needs: [build, sign-darwin]
     if: startsWith(github.ref, 'refs/tags/release-')
     runs-on: ubuntu-latest
     steps:
