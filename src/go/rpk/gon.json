@@ -2,7 +2,7 @@
     "source" : ["./rpk"],
     "bundle_id" : "io.vectorized.redpanda",
     "apple_id": {
-        "username" : "@env:AC_USER",
+        "username" : "@env:AC_USERNAME",
         "password":  "@env:AC_PASSWORD"
     },
     "sign" :{

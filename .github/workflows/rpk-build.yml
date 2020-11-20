@@ -89,6 +89,7 @@ jobs:
         working-directory: zip/
         run: |
           unzip rpk-darwin-amd64.zip
+          rm rpk-darwin-amd64.zip
 
       - name: Import Code-Signing Certificates
         uses: Apple-Actions/import-codesign-certs@v1
