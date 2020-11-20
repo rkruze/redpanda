@@ -1,0 +1,14 @@
+{
+    "source" : ["./rpk"],
+    "bundle_id" : "io.vectorized.redpanda",
+    "apple_id": {
+        "username" : "@env:AC_USER",
+        "password":  "@env:AC_PASSWORD"
+    },
+    "sign" :{
+        "application_identity" : "Developer ID Application: Vectorized, Inc."
+    },
+    "zip" :{
+        "output_path" : "rpk-darwin-amd64.zip"
+    }
+}
