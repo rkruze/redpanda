@@ -152,3 +152,17 @@ jobs:
         asset_path: rpk-archives/rpk-${{ matrix.os }}-amd64.zip
         asset_name: rpk-${{ matrix.os }}-amd64.zip
         asset_content_type: application/zip
+    - name: Update the homebrew tap
+      uses: mislav/bump-homebrew-formula-action@v1
+      if: matrix.os == darwin
+      with:
+        formula-name: redpanda
+        homebrew-tap: rkruze/tap
+        base-branch: master
+        download-url: ${{ step.upload-release-asset.browser_download_url }}
+        commit-message: ${{formulaName}} {{version}}
+      env:
+        COMMITTER_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        
