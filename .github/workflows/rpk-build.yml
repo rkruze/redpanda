@@ -159,7 +159,7 @@ jobs:
         formula-name: redpanda
         homebrew-tap: rkruze/tap
         base-branch: master
-        download-url: ${{ steps.upload-release-asset.browser_download_url }}
+        download-url: steps.upload-release-asset.browser_download_url
       env:
         COMMITTER_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
