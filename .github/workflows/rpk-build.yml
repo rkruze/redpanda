@@ -154,7 +154,7 @@ jobs:
         asset_content_type: application/zip
     - name: Update the homebrew tap
       uses: mislav/bump-homebrew-formula-action@v1
-      if: matrix.os == darwin
+      if: matrix.os == 'darwin'
       with:
         formula-name: redpanda
         homebrew-tap: rkruze/tap
