@@ -144,6 +144,7 @@ jobs:
       uses: actions/download-artifact@v2
 
     - name: Upload rpk artifacts to release
+      id: upload-release
       uses: actions/upload-release-asset@v1.0.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -154,7 +155,7 @@ jobs:
         asset_content_type: application/zip
     - name: Echo the download url
       run: |
-        echo "${{ steps.upload-release-asset.browser_download_url }}"
+        echo "${{ steps.upload-release.browser_download_url }}"
     - name: Update the homebrew tap
       uses: mislav/bump-homebrew-formula-action@v1.8
       if: matrix.os == 'darwin'
@@ -162,7 +163,7 @@ jobs:
         formula-name: redpanda
         homebrew-tap: rkruze/tap
         base-branch: master
-        download-url: ${{ steps.upload-release-asset.browser_download_url }}
+        download-url: ${{ steps.upload-release.browser_download_url }}
       env:
         COMMITTER_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
