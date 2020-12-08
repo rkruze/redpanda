@@ -146,7 +146,7 @@ jobs:
 
     - name: Upload rpk artifacts to release
       id: upload-release
-      uses: actions/upload-release-asset@v1.0.2
+      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -154,6 +154,7 @@ jobs:
         asset_path: rpk-archives/rpk-${{ matrix.os }}-amd64.zip
         asset_name: rpk-${{ matrix.os }}-amd64.zip
         asset_content_type: application/zip
+    
     - name: Update the homebrew tap
       uses: mislav/bump-homebrew-formula-action@v1.8
       if: matrix.os == 'darwin'
