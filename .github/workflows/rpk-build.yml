@@ -127,7 +127,7 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: ${{ github.ref }}
-        draft: true
+        draft: false
         prerelease: false
     outputs:
       upload_url: ${{ steps.create_rpk_release.outputs.upload_url }}
@@ -155,6 +155,10 @@ jobs:
         asset_name: rpk-${{ matrix.os }}-amd64.zip
         asset_content_type: application/zip
     
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        
     - name: Update the homebrew tap
       uses: mislav/bump-homebrew-formula-action@v1.8
       if: matrix.os == 'darwin'
@@ -166,5 +170,6 @@ jobs:
       env:
         COMMITTER_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RUNNER_DEBUG: 1
 
         
